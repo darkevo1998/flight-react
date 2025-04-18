@@ -113,7 +113,7 @@ const FlightSearch = ({ onSearch }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+    setIsSearching(true); // Set loading state to true
     try {
       // Validate inputs
       if (!searchParams.originSkyId || !searchParams.destinationSkyId || !searchParams.date) {
@@ -142,6 +142,9 @@ const FlightSearch = ({ onSearch }) => {
     } catch (error) {
       console.error('Search error:', error);
       alert(`Search failed: ${error.message}`);
+    }
+    finally{
+        setIsSearching(false); // Reset loading state
     }
   };
 
